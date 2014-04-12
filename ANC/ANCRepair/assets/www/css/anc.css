@@ -1,6 +1,22 @@
 .center
 {
+	margin:auto;
+}
+
+#map-canvas
+{
 	margin-left:auto;
 	margin-right:auto;
-	width:100%;
+	width: 100%;
+	height: 70%;
+	background: transparent url(img/Loading_Animation.gif) no-repeat center;
+}
+
+
+#RequestAssistanceScreen
+{
+	margin-left:auto;
+	margin-right:auto;
+	width: 100%;
+	height: 70%;
 }

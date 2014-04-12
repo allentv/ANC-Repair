@@ -51,6 +51,16 @@
 			<type>1</type>
 			<locationURI>PROJECT_LOC/assets/www/css/anc.css</locationURI>
 		</link>
+		<link>
+			<name>assets/www/js/maps.js</name>
+			<type>1</type>
+			<locationURI>PROJECT_LOC/assets/www/js/maps.js</locationURI>
+		</link>
+		<link>
+			<name>assets/www/js/webintent.js</name>
+			<type>1</type>
+			<locationURI>PROJECT_LOC/assets/www/js/webintent.js</locationURI>
+		</link>
 	</linkedResources>
 	<filteredResources>
 		<filter>

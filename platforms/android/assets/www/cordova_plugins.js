@@ -142,7 +142,8 @@ module.exports.metadata =
     "org.apache.cordova.device": "0.2.8",
     "org.apache.cordova.console": "0.2.7",
     "org.apache.cordova.contacts": "0.2.9",
-    "org.apache.cordova.camera": "0.2.8"
+    "org.apache.cordova.camera": "0.2.8",
+    "nl.x-services.plugins.flashlight": "1.4.1"
 }
 // BOTTOM OF METADATA
 });

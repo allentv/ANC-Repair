@@ -28,4 +28,8 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <feature name="Flashlight">
+        <param name="android-package" value="nl.xservices.plugins.Flashlight" />
+        <param name="android-package" value="nl.x-services.plugins.Flashlight" />
+    </feature>
 </widget>

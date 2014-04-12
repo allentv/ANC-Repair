@@ -6,6 +6,8 @@ F:\TCD\Accenture\GitRepo\platforms\android\ant-build\classes\com\accenture\codea
 F:\TCD\Accenture\GitRepo\platforms\android\ant-build\classes\com\accenture\codeathon\R$string.class \
 F:\TCD\Accenture\GitRepo\platforms\android\ant-build\classes\com\accenture\codeathon\R$xml.class \
 F:\TCD\Accenture\GitRepo\platforms\android\ant-build\classes\com\accenture\codeathon\R.class \
+F:\TCD\Accenture\GitRepo\platforms\android\ant-build\classes\nl\xservices\plugins\Flashlight$1.class \
+F:\TCD\Accenture\GitRepo\platforms\android\ant-build\classes\nl\xservices\plugins\Flashlight.class \
 F:\TCD\Accenture\GitRepo\platforms\android\ant-build\classes\org\apache\cordova\camera\CameraLauncher.class \
 F:\TCD\Accenture\GitRepo\platforms\android\ant-build\classes\org\apache\cordova\camera\ExifHelper.class \
 F:\TCD\Accenture\GitRepo\platforms\android\ant-build\classes\org\apache\cordova\camera\FileHelper.class \

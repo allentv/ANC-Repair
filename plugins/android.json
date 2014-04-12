@@ -1,6 +1,12 @@
 {
     "prepare_queue": {
-        "installed": [],
+        "installed": [
+            {
+                "plugin": "info.asankan.phonegap.smsplugin",
+                "vars": {},
+                "topLevel": true
+            }
+        ],
         "uninstalled": []
     },
     "config_munge": {
@@ -26,6 +32,14 @@
                         },
                         {
                             "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Flashlight\"><param name=\"android-package\" value=\"nl.xservices.plugins.Flashlight\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SMSPlugin\"><param name=\"android-package\" value=\"info.asankan.phonegap.smsplugin.SmsPlugin\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -57,6 +71,20 @@
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.SEND_SMS\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.RECEIVE_SMS\" />",
+                            "count": 1
+                        }
+                    ],
+                    "/manifest": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.CAMERA\" />",
+                            "count": 1
                         }
                     ]
                 }
@@ -80,6 +108,12 @@
             "PACKAGE_NAME": "com.accenture.codeathon"
         },
         "org.apache.cordova.camera": {
+            "PACKAGE_NAME": "com.accenture.codeathon"
+        },
+        "nl.x-services.plugins.flashlight": {
+            "PACKAGE_NAME": "com.accenture.codeathon"
+        },
+        "info.asankan.phonegap.smsplugin": {
             "PACKAGE_NAME": "com.accenture.codeathon"
         }
     },
