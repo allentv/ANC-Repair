@@ -1,0 +1,3 @@
+INDEX VERSION 1.126+F:\TCD\Accenture\GitRepo\ANC\.metadata\.plugins\org.eclipse.jdt.core
+4164236923.index
+109088442.index

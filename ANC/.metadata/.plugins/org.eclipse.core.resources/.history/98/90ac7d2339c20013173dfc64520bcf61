@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <!-- <meta name="viewport" content="user-scalable=no, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" /> -->
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <!-- <link rel="stylesheet" type="text/css" href="css/index.css" /> -->
+        <link rel="stylesheet" type="text/css" href="css/anc.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.2.min.css" />
+        <title>Hello World</title>
+    </head>
+    <body class="center">
+    	<!-- 
+        <div class="app">
+            <h1>Apache Cordova</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            </div>
+        </div>
+        -->
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.2.min.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <!-- <script type="text/javascript" src="js/main.js"></script> -->
+        
+        <!-- 
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+         -->
+         
+        <!-- Login Screen -->
+        <div data-role="page" id="LoginScreen" data-title="Login" data-fullscreen="true">
+        	<div data-role="content">
+        		<div class="center">
+        			<img src="img/ACN_Logo.jpg">
+        		</div>
+        		<br>
+        		<table>
+        			<tr>
+        				<td>User Name</td>
+        				<td>&nbsp;:&nbsp;</td>
+        				<td><input type="text" size="10"></td>
+        			</tr>
+        			<tr>
+        				<td>Password</td>
+        				<td>&nbsp;:&nbsp;</td>
+        				<td><input type="password" size="10"></td>
+        			</tr>
+        			<tr>
+        				<td><a href="#" onclick="navigator.app.exitApp();" data-role="button" data-inline="true">Exit</a></td>
+        				<td>&nbsp;</td>
+        				<td><a href="#MenuScreen" data-role="button" data-inline="true">Login</a></td>
+        			</tr>
+        		</table>
+        	</div>
+        </div>
+        
+        <!-- Menu Screen -->
+        <div data-role="page" id="MenuScreen" data-title="Menu">
+        	<div data-role="header">
+        		<h1>Menu</h1>
+        	</div>
+        	<div data-role="content">
+        		<br>
+        		<div>
+        		<a href="#MinorClaimsScreen" data-role="button" >Minor Claims</a>
+        		<br>
+        		<a href="#BreakdownAssistScreen" data-role="button">Breakdown Assist</a>
+        		<br>
+        		<a href="#MajorIncidentScreen" data-role="button">Major Incident</a>
+        		<br>
+        		<a href="#HelpScreen" data-role="button">Help</a>
+        		<br>
+        		<a href="#SettingsScreen" data-role="button">Settings</a>
+        		<br>
+        		<a href="#" onclick="navigator.app.exitApp();" data-role="button">Exit</a>
+        		</div>
+        	</div>
+        </div>
+        
+        <!-- Minor Claims Screen -->
+        <div data-role="page" id="MinorClaimsScreen" data-title="Minor Claims">
+        	<script type="text/javascript">
+        		function checkOthers(obj) {
+        			alert("Others clicked!"+obj.value);
+        		}
+        	</script>
+        	
+        	<div data-role="header">
+        		<a href="#MenuScreen" data-icon="delete">Cancel</a>
+        		<h1>Minor Claims</h1>
+        		<a href="#MenuScreen" data-icon="check">Submit</a>
+        	</div>
+        	<div data-role="content">
+        		<div class="center">
+        			<table>
+        				<tr>
+        					<td>Party</td>
+        					<td>&nbsp;:&nbsp;</td>
+        					<td>
+        						<select id="partyField">
+        							<option>-</option>
+        							<option>Customer</option>
+        							<option>Other Party</option>
+        						</select>
+        					</td>
+        				</tr>
+        				<tr>
+        					<td>Damaged&nbsp;Part</td>
+        					<td>&nbsp;:&nbsp;</td>
+        					<td>
+        						<select id="partField" onchange="checkOthers(this);">
+        							<option>-</option>
+        							<option>Windshield</option>
+        							<option>Bumper</option>
+        							<option>Door</option>
+        							<option>Mirror</option>
+        							<option>Head Light</option>
+        							<option>Tail Light</option>
+        							<option>Other</option>
+        						</select>
+        					</td>
+        				</tr>
+        				<tr id="otherPartSection">
+        					<td>Other Part</td>
+        					<td>&nbsp;:&nbsp;</td>
+        					<td><input id="otherPartField" type="text" size="10"></td>
+        				</tr>
+        				<tr>
+        					<td colspan="3">Description</td>
+        				</tr>
+        				<tr>
+        					<td colspan="3"><textarea id="descField" rows="6"></textarea></td>
+        				</tr>
+        				<tr>
+        					<td>Pictures</td>
+        					<td>&nbsp;:&nbsp;</td>
+        					<td>
+        						<div id="picsField"></div>
+        					</td>
+        				</tr>
+        			</table>
+        		</div>
+        	</div>
+        </div>
+        
+        <!-- Breakdown Assist Screen -->
+        <div data-role="page" id="BreakdownAssistScreen" data-title="Breakdown Assist">
+        	<div data-role="header">
+        		<a href="#MenuScreen" data-icon="delete">Back</a>
+        		<h1>Breakdown Assist</h1>
+        	</div>
+        	<div data-role="content">
+        		<p>
+        			ACN Breakdown is a support service available to all ACN customers 24 hours a day, 365 days a year through-out Ireland. The service has a excellent reputatiuon and can fix 8 out of 10 rescue situations at the roadside. For all other fixes the service will ensure local recovery to an ACN Appointed Garage if we can't fix your car by the road.
+        			<br>
+					We cover:
+					<br>
+					<ul>
+						<li>Mechanical Breakdown</li>
+						<li>Out of Fuel</li>
+						<li>Keys lost or locked in car</li> 
+						<li>Punctures</li>
+						<li>Accidental collision damage</li> 
+						<li>Flat Battery</li>
+						<li>Overheating</li>
+						<li>Alarm Faults</li>
+					</ul>
+					<br>
+					Call Helpline - <u>086 355 1303</u>
+					<br>
+					OR
+					<br>
+					<a href="#RequestAssistance" data-role="button">Request Assistance</a>
+        		</p>
+        	</div>
+        </div>
+        
+        <!-- Major Incident Screen -->
+        <div data-role="page" id="MajorIncidentScreen" data-title="Major Incident">
+        	<div data-role="header">
+        		<a href="#MenuScreen" data-icon="delete">Back</a>
+        		<h1>Major Incident</h1>
+        	</div>
+        	<div data-role="content">
+        		<p>
+        			Emergency Services - 999
+        			<br>
+					Visit our <a href="https://www.112.ie/">page</a>
+					<br>
+					ACN Major Incident Helpline – 086 355 1303
+					<br>
+        		</p>
+        	</div>
+        </div>
+        
+        <!-- Help Screen -->
+        <div data-role="page" id="HelpScreen" data-title="Major Incident">
+        	<div data-role="header">
+        		<a href="#MenuScreen" data-icon="delete">Back</a>
+        		<h1>Help</h1>
+        	</div>
+        	<div data-role="content">
+        		<p>
+        			Emergency Services - 999
+        			<br>
+					Visit our <a href="https://www.112.ie/">page</a>
+					<br>
+					ACN Major Incident Helpline – 086 355 1303
+					<br>
+        		</p>
+        	</div>
+        </div>
+        
+        <!-- Settings Screen -->
+        <div data-role="page" id="SettingsScreen" data-title="Settings">
+        	<div data-role="header">
+        		<a href="#MenuScreen" data-icon="delete">Back</a>
+        		<h1>Settings</h1>
+        	</div>
+        	<div data-role="content">
+        		<p>
+        			<table>
+        				<tr>
+        					<td>Name</td>
+        					<td>&nbsp;:&nbsp;</td>
+        					<td><input type="text" size="10"></td>
+        				</tr>
+        				<tr>
+        					<td>Password</td>
+        					<td>&nbsp;:&nbsp;</td>
+        					<td><input type="password" size="10"></td>
+        				</tr>
+        				<tr>
+        					<td>Policy Nummber</td>
+        					<td>&nbsp;:&nbsp;</td>
+        					<td><input type="text" size="10"></td>
+        				</tr>
+        			</table>
+        		</p>
+        	</div>
+        </div>
+        
+    </body>
+</html>
