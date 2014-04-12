@@ -430,7 +430,7 @@
 				 	$("#myLocationField").select();
 				 	
 				 	function showWebsite() {
-				 		window.open("http://www.google.ie");
+				 		window.open("http://www.google.ie","_blank","location=yes");
 				 	}
 				</script>
 				Current Location&nbsp;:&nbsp;<input type="text" id="myLocationField" name="myLocationField" size="10">
@@ -447,7 +447,9 @@
         		<p>
         			Emergency Services - <a href="tel:999">999</a>
         			<br>
+					<br>
 					<a href="#" onclick="showWebsite();" data-role="button" data-inline="true">Visit our page</a>
+					<br>
 					<br>
 					ACN Major Incident <a href="tel:086 355 1303">Helpline</a>
 					<br>

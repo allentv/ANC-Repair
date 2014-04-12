@@ -1,0 +1,19 @@
+/**
+ * 
+ */
+package com.accenture.codeathon;
+
+/**
+ * @author home
+ *
+ */
+public class WebIntent {
+
+	/**
+	 * 
+	 */
+	public WebIntent() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

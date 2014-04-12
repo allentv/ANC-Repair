@@ -132,6 +132,13 @@ module.exports = [
         "clobbers": [
             "CameraPopoverHandle"
         ]
+    },
+    {
+        "file": "plugins/info.asankan.phonegap.smsplugin/www/smsplugin.js",
+        "id": "info.asankan.phonegap.smsplugin.smsplugin",
+        "clobbers": [
+            "smsplugin"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -143,7 +150,8 @@ module.exports.metadata =
     "org.apache.cordova.console": "0.2.7",
     "org.apache.cordova.contacts": "0.2.9",
     "org.apache.cordova.camera": "0.2.8",
-    "nl.x-services.plugins.flashlight": "1.4.1"
+    "nl.x-services.plugins.flashlight": "1.4.1",
+    "info.asankan.phonegap.smsplugin": "0.2.0"
 }
 // BOTTOM OF METADATA
 });

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <!-- <meta name="viewport" content="user-scalable=no, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" /> -->
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <!-- <link rel="stylesheet" type="text/css" href="css/index.css" /> -->
+        <link rel="stylesheet" type="text/css" href="css/anc.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.2.min.css" />
+        <title>Hello World</title>
+    </head>
+    <body class="center">
+    	<!-- 
+        <div class="app">
+            <h1>Apache Cordova</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            </div>
+        </div>
+        -->
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.2.min.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+        <script type="text/javascript" src="js/maps.js"></script>
+        <script type="text/javascript" src="js/webintent.js"></script>
+        <script type="text/javascript" src="js/Flashlight.js"></script>
+        <!-- <script type="text/javascript" src="js/main.js"></script> -->
+        
+         
+        <script type="text/javascript">
+            //app.initialize();
+            $.mobile.allowCrossDomainPages = true;
+        </script>
+        
+         
+        <!-- Login Screen -->
+        <div data-role="page" id="LoginScreen" data-title="Login" data-fullscreen="true">
+        	<div data-role="content">
+        		<div class="center">
+        			<img src="img/ACN_Logo.jpg">
+        		</div>
+        		<br>
+        		<table>
+        			<tr>
+        				<td>User Name</td>
+        				<td>&nbsp;:&nbsp;</td>
+        				<td><input type="text" size="10" value="user"></td>
+        			</tr>
+        			<tr>
+        				<td>Password</td>
+        				<td>&nbsp;:&nbsp;</td>
+        				<td><input type="password" size="10" value="demo"></td>
+        			</tr>
+        			<tr>
+        				<td><a href="#" onclick="navigator.app.exitApp();" data-role="button" data-inline="true">Exit</a></td>
+        				<td>&nbsp;</td>
+        				<td><a href="#MenuScreen" data-role="button" data-inline="true">Login</a></td>
+        			</tr>
+        		</table>
+        	</div>
+        </div>
+        
+        <!-- Menu Screen -->
+        <div data-role="page" id="MenuScreen" data-title="Menu">
+        	<div data-role="header">
+        		<h1>Menu</h1>
+        	</div>
+        	<div data-role="content">
+        		<div>
+        		<a href="#MinorClaimsScreen" data-role="button" >Minor Claims</a>
+        		<br>
+        		<a href="#BreakdownAssistScreen" data-role="button">Breakdown Assist</a>
+        		<br>
+        		<a href="#MajorIncidentScreen" data-role="button">Major Incident</a>
+        		<br>
+        		<a href="#SettingsScreen" data-role="button">Settings</a>
+        		<br>
+        		<a href="#" onclick="navigator.app.exitApp();" data-role="button">Exit</a>
+        		</div>
+        	</div>
+        </div>
+        
+        <!-- Minor Claims Screen -->
+        <div data-role="page" id="MinorClaimsScreen" data-title="Minor Claims">
+        	<script type="text/javascript">
+        		$(document).ready(function(){
+        			$("#otherPartSection").hide();	
+        		});
+        		function checkOthers(obj) {
+        			if(obj.value == "Other") {
+        				$("#otherPartSection").show();
+        			} else {
+        				$("#otherPartSection").hide();
+        			}
+        		}
+        		
+        		function clickPicture() {
+        			navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI });
+        		}
+        		
+        		function onPhotoDataSuccess(imageURI) {
+        			var smallImage = document.getElementById('imageField');
+        			smallImage.style.display = 'block';
+        			//smallImage.src = "data:image/jpeg;base64," + imageData;
+        			smallImage.src = imageURI;
+        			//alert("Image captured!")
+        		}
+        		
+        		function onFail(message) {
+        			navigator.notification.alert('Failed because: ' + message);
+        			//alert("Image capture failed!")
+        		}
+        		
+				function gomail(){
+					alert("mail going");
+					var extras = {};
+					extras[WebIntent.EXTRA_SUBJECT] = "subject";
+					extras[WebIntent.EXTRA_TEXT] = "body";
+					extras[WebIntent.EXTRA_STREAM]="file:///mnt/sdcard/abc.png";
+					WebIntent.prototype.startActivity({ 
+					    action: WebIntent.ACTION_SEND,
+					    type: 'application/octet-stream', 
+					    extras: extras 
+					  }, 
+					  function() {
+					  	alert("success");
+					  }, 
+					  function() {
+					  	alert('Failed to send email via Android Intent');
+					  }
+					); 
+				}
+				
+				function updateCharCount() {
+					//alert($("#descField").val().length);
+					var charsLeft = 1000 - parseInt($("#descField").val().length);
+					$("#charCountField").html("<font color='red'>"+charsLeft+" chars left</font>");
+				}
+				
+				function validateFormFields() {
+					if($("#partyField").val() == "-") {
+						alert("Please choose a party!");
+						$("#partyField").focus();
+						return;
+					}
+					if($("#partField").val() == "-") {
+						alert("Please choose a part!");
+						$("#partField").focus();
+						return;
+					}
+					if($("#partField").val() == "Other") {
+						if($("#otherPartField").val() == "") {
+							alert("Please choose a part!");
+							$("#partField").focus();
+							return;
+						}
+					}
+					if($("#descField").val() == "-") {
+						alert("Please enter a Description!");
+						$("#descField").focus();
+						return;
+					}
+				}
+        	</script>
+        	
+        	<div data-role="header">
+        		<a href="#MenuScreen" data-icon="delete">Cancel</a>
+        		<h1>Minor Claims</h1>
+        		<a href="#MenuScreen" onclick="validateFormFields();" data-icon="check">Submit</a>
+        	</div>
+        	<div data-role="content">
+        		<div class="center">
+        			<table>
+        				<tr>
+        					<td>Party</td>
+        					<td>&nbsp;:&nbsp;</td>
+        					<td>
+        						<select id="partyField" size="20">
+        							<option selected>-</option>
+        							<option>Customer</option>
+        							<option>Other Party</option>
+        						</select>
+        						<font color="red">*</font>
+        					</td>
+        				</tr>
+        				<tr>
+        					<td>Damaged&nbsp;Part</td>
+        					<td>&nbsp;:&nbsp;</td>
+        					<td>
+        						<select id="partField" onchange="checkOthers(this);">
+        							<option selected>-</option>
+        							<option>Windshield</option>
+        							<option>Bumper</option>
+        							<option>Door</option>
+        							<option>Mirror</option>
+        							<option>Head Light</option>
+        							<option>Tail Light</option>
+        							<option>Other</option>
+        						</select>
+        						<font color="red">*</font>
+        					</td>
+        				</tr>
+        				<tr id="otherPartSection">
+        					<td>Other&nbsp;Part</td>
+        					<td>&nbsp;:&nbsp;</td>
+        					<td><input id="otherPartField" type="text" size="10"></td>
+        				</tr>
+        				<tr>
+        					<td colspan="2">Description&nbsp;<font color="red">*</font></td>
+        					<td><label id="charCountField"></label></td>
+        				</tr>
+        				<tr>
+        					<td colspan="3" height="50">
+        						<textarea id="descField" rows="6" maxlength="1000" onkeyup="updateCharCount();"></textarea>
+        					</td>
+        				</tr>
+        				<tr>
+        					<td>Pictures</td>
+        					<td>&nbsp;:&nbsp;</td>
+        					<td>
+        						<a href="#" onclick="clickPicture();">Click Picture</a>
+        						<br>
+        						<img style="display:none;width:100px;height:100px;" id="imageField" src="" />
+        					</td>
+        				</tr>
+        				<tr>
+        					<td>Location</td>
+        					<td>&nbsp;:&nbsp;</td>
+        					<td>
+        						<script type="text/javascript">
+        						 	navigator.geolocation.getCurrentPosition(onSuccess, onError);
+        						 	function onSuccess(position) {
+        						 		$("#locationField").val(position.coords.latitude+" , "+position.coords.longitude);
+        						 	}
+        						 	function onError(error) {
+        						 		alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
+        						 	}
+        						</script>
+        						<input type="text" id="locationField" name="locationField" size="15" readonly></input><font color="red">*</font>
+        					</td>
+        				</tr>
+        			</table>
+        			<font color="red"><i>* marked fields are required</i></font>
+        		</div>
+        	</div>
+        </div>
+        
+        <!-- Breakdown Assist Screen -->
+        <div data-role="page" id="BreakdownAssistScreen" data-title="Breakdown Assist">
+        	<script type="text/javascript">
+        		function flipFlashLight() {
+        			window.plugins.flashlight.toggle();
+        		}
+        		document.addEventListener("backbutton", function() {
+        			  // pass exitApp as callbacks to the switchOff method
+        			  window.plugins.flashlight.switchOff(null, null);
+        			}, false);
+        	</script>
+        	<div data-role="header">
+        		<a href="#MenuScreen" data-icon="delete">Back</a>
+        		<h1>Breakdown Assist</h1>
+        	</div>
+        	<div data-role="content">
+       			ACN Breakdown is a support service available to all ACN customers 24 hours a day, 365 days a year through-out Ireland. The service has a excellent reputatiuon and can fix 8 out of 10 rescue situations at the roadside. For all other fixes the service will ensure local recovery to an ACN Appointed Garage if we can't fix your car by the road.
+       			<br>
+				We cover:
+				<br>
+				<ul>
+					<li>Mechanical Breakdown</li>
+					<li>Out of Fuel</li>
+					<li>Keys lost or locked in car</li> 
+					<li>Punctures</li>
+					<li>Accidental collision damage</li> 
+					<li>Flat Battery</li>
+					<li>Overheating</li>
+					<li>Alarm Faults</li>
+				</ul>
+				<br>
+				<a href="#RequestAssistanceScreen" data-role="button" data-inline="true">Request Assistance</a>&nbsp;&nbsp;OR&nbsp;&nbsp;Call <a href="tel:086 355 1303">Helpline</a>
+				
+				<br>
+				Flashlight :
+				<br>
+				<select name="flip-1" id="flip-1" data-role="slider" onchange="flipFlashLight();">
+					<option value="off">Off</option>
+					<option value="on">On</option>
+				</select>
+				
+        	</div>
+        </div>
+        
+        <!-- Request Assistance Screen -->
+        <div data-role="page" id="RequestAssistanceScreen" data-title="Request Assistance">
+        	<script type="text/javascript">
+        		function sendRequest() {
+        			alert("Details Sent!")
+        		}
+        	</script>
+        	
+			<div data-role="header">
+				<a href="#BreakdownAssistScreen" data-icon="delete">Back</a>
+				<h1>My Location</h1>
+				<a href="#" onclick="sendRequest();" data-icon="check">Submit</a>
+			</div>
+			<div data-role="content" id="map-canvas">
+			</div>
+			<div data-role="content">
+				<script type="text/javascript">
+				 	navigator.geolocation.getCurrentPosition(onSuccess, onError);
+				 	function onSuccess(position) {
+				 		$("#myLocationField").val(position.coords.latitude+" , "+position.coords.longitude);
+				 	}
+				 	function onError(error) {
+				 		alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
+				 	}
+				 	$("#myLocationField").select();
+				</script>
+				Current Location&nbsp;:&nbsp;<input type="text" id="myLocationField" name="myLocationField" size="10">
+			</div>
+		</div>
+        
+        <!-- Major Incident Screen -->
+        <div data-role="page" id="MajorIncidentScreen" data-title="Major Incident">
+        	<div data-role="header">
+        		<a href="#MenuScreen" data-icon="delete">Back</a>
+        		<h1>Major Incident</h1>
+        	</div>
+        	<div data-role="content">
+        		<p>
+        			Emergency Services - <a href="tel:999">999</a>
+        			<br>
+					<a href="https://www.112.ie/" data-role="button" data-inline="true">Visit our page</a>
+					<br>
+					ACN Major Incident <a href="tel:086 355 1303">Helpline</a>
+					<br>
+        		</p>
+        	</div>
+        </div>
+        
+        <!-- Settings Screen -->
+        <div data-role="page" id="SettingsScreen" data-title="Settings">
+        	<div data-role="header">
+        		<a href="#MenuScreen" data-icon="delete">Back</a>
+        		<h1>Settings</h1>
+        	</div>
+        	<div data-role="content">
+       			<table>
+       				<tr>
+       					<td>Name</td>
+       					<td>&nbsp;:&nbsp;</td>
+       					<td><input type="text" size="10" value="user"></td>
+       				</tr>
+       				<tr>
+       					<td>Password</td>
+       					<td>&nbsp;:&nbsp;</td>
+       					<td><input type="password" size="10" value="demo"></td>
+       				</tr>
+       				<tr>
+       					<td>Policy Number</td>
+       					<td>&nbsp;:&nbsp;</td>
+       					<td><input type="text" size="10" value="policy123"></td>
+       				</tr>
+       			</table>
+        	</div>
+        </div>
+		
+    </body>
+</html>

@@ -1,12 +1,6 @@
 {
     "prepare_queue": {
-        "installed": [
-            {
-                "plugin": "info.asankan.phonegap.smsplugin",
-                "vars": {},
-                "topLevel": true
-            }
-        ],
+        "installed": [],
         "uninstalled": []
     },
     "config_munge": {
@@ -40,7 +34,7 @@
                         },
                         {
                             "xml": "<feature name=\"SMSPlugin\"><param name=\"android-package\" value=\"info.asankan.phonegap.smsplugin.SmsPlugin\" /></feature>",
-                            "count": 1
+                            "count": 2
                         }
                     ]
                 }
@@ -74,11 +68,11 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.SEND_SMS\" />",
-                            "count": 1
+                            "count": 2
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.RECEIVE_SMS\" />",
-                            "count": 1
+                            "count": 2
                         }
                     ],
                     "/manifest": [

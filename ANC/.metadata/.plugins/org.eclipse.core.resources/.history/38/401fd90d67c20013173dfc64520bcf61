@@ -1,0 +1,45 @@
+$( "#RequestAssistanceScreen" ).live( "pageinit", function() {
+	
+	var defaultLatLng = new google.maps.LatLng(53.339728, -6.239223);
+	if ( navigator.geolocation ) {
+		function success(pos) {
+			// Location found, show coordinates on map
+			drawMap(new google.maps.LatLng(
+			pos.coords.latitude, pos.coords.longitude));
+		}
+		
+		function fail() {
+			drawMap(defaultLatLng); // Show default map
+		}
+		
+		// Find users current position
+		navigator.geolocation.getCurrentPosition(success, fail,
+		{
+			enableHighAccuracy:true, timeout: 6000, maximumAge: 500000});
+	} else {
+		drawMap(defaultLatLng); // No geolocation support
+	}
+		
+	function drawMap(latlng) {
+		var myOptions = {
+			zoom: 20,
+			center: latlng,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		
+		var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+		
+		var request = {
+			    location: defaultLatLng,
+			    radius: 500,
+			    types: ['gas_station']
+			  };
+		
+		
+		var marker = new google.maps.Marker({
+			position: latlng,
+			map: map,
+			title: "I am here"
+		});
+	}
+});

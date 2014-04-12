@@ -19,6 +19,12 @@
     <feature name="Camera">
         <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
     </feature>
+    <feature name="Flashlight">
+        <param name="android-package" value="nl.xservices.plugins.Flashlight" />
+    </feature>
+    <feature name="SMSPlugin">
+        <param name="android-package" value="info.asankan.phonegap.smsplugin.SmsPlugin" />
+    </feature>
     <name>ANCRepair</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -28,8 +34,8 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
-    <feature name="Flashlight">
-        <param name="android-package" value="nl.xservices.plugins.Flashlight" />
-        <param name="android-package" value="nl.x-services.plugins.Flashlight" />
-    </feature>
+    <feature name="Flashlight" value="nl.xservices.plugins.Flashlight" />
+    <feature name="Geolocation" value="org.apache.cordova.GeoBroker" />
+    <feature name="WebIntent" value="com.accenture.codeathon.WebIntent" />
+    <feature name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />
 </widget>
